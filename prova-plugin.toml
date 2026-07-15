@@ -5,4 +5,4 @@ description = "S3-compatible object store (MinIO) — docker-exec over mc, zero 
 license     = "MIT"
 
 [requires]
-prova = ">=0.1, <0.2"
+prova = ">=0.2, <0.3"
