@@ -34,11 +34,11 @@ local function make_client(container)
     return mc(container, { "cat", "local/" .. bucket .. "/" .. key })
   end
 
-  -- `mc --json ls` emits one JSON object per line; parse each with the SDK's `prova.parse.json`.
+  -- `mc --json ls` emits one JSON object per line; parse each with the `json` format namespace.
   function client:list(bucket)
     local keys = {}
     for _, line in ipairs(prova.parse.lines(mc(container, { "--json", "ls", "local/" .. bucket }))) do
-      local obj = prova.parse.json(line)
+      local obj = json.decode(line)
       if obj.key then keys[#keys + 1] = obj.key end
     end
     return keys
