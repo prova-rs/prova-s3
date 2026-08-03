@@ -16,5 +16,5 @@ proofs = ["tests"]
 
 # Resolve THIS package from its own directory, so the self-tests can `require("s3")` exactly as
 # a consumer would.
-[packages]
+[dependencies]
 s3 = { path = "." }
