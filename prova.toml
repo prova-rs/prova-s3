@@ -1,20 +1,20 @@
-# One manifest, two hats. This package both exports a namespace (a plugin — `[plugin]`) and runs
+# One manifest, two hats. This package both exports a namespace (a package — `[package]`) and runs
 # its own proofs (a suite). A consumer instead pins it by source — a released tag:
 #   s3 = { git = "https://github.com/prova-rs/prova-s3", tag = "v1.0" }
-[plugin]
+[package]
 name        = "s3"
 entry       = "s3.lua"
 description = "S3-compatible object store (MinIO) — docker-exec over mc, zero native code"
 license     = "MIT"
 
-# The range of prova versions this plugin is built against; a consumer is checked against it.
+# The range of prova versions this package is built against; a consumer is checked against it.
 [requires]
-prova = ">=0.3"
+prova = ">= 0.16"
 
 [run]
 proofs = ["tests"]
 
-# Resolve THIS plugin from its own directory, so the self-tests can `require("s3")` exactly as
+# Resolve THIS package from its own directory, so the self-tests can `require("s3")` exactly as
 # a consumer would.
-[plugins]
+[packages]
 s3 = { path = "." }
